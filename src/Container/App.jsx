@@ -8,7 +8,7 @@ import Scroll from '../Components/Scroll';
 
 function App() {
   //use state
-  const [Robot, SetRobot] = useState(Robo)
+  const [Robot, SetRobot] = useState([])
   const [searchfield,setSearchfield]=useState("")
   
   //for searching
@@ -22,8 +22,8 @@ function App() {
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(users => this.setState({ Robot: users }));
-  });
+      .then(users => {SetRobot(users) })
+  },[]);
   if (Robot.length === 0) {
     return<h1>LOADING</h1>
   }
